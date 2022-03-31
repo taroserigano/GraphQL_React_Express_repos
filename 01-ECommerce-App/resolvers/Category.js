@@ -1,4 +1,5 @@
 exports.Category = {
+  // * how to use categoryId query 
   products: ({ id: categoryId }, { filter }, { db }) => {
     const categoryProducts = db.products.filter(
       (product) => product.categoryId === categoryId
