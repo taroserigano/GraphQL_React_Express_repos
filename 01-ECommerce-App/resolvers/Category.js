@@ -5,7 +5,7 @@ exports.Category = {
       (product) => product.categoryId === categoryId
     );
     let filteredCategoryProducts = categoryProducts;
-
+    // filter products that are on Sale
     if (filter) {
       if (filter.onSale === true) {
         filteredCategoryProducts = filteredCategoryProducts.filter(
