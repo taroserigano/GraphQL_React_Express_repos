@@ -47,7 +47,9 @@ exports.Mutation = {
     return newReview;
   },
   deleteCategory: (parent, { id }, { db }) => {
+    // first, delete category from categories
     db.categories = db.categories.filter((category) => category.id !== id);
+    // map it, and find matching product, and then just release product but nullify the attached category 
     db.products = db.products.map((product) => {
       if (product.categoryId === id)
         return {
