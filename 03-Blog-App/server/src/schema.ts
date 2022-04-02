@@ -3,12 +3,16 @@ import { gql } from "apollo-server";
 export const typeDefs = gql`
   type Query {
     me: User
+    // show all the posts
     posts: [Post!]!
+    // show profile (with the userId) 
     profile(userId: ID!): Profile
   }
 
   type Mutation {
+    // just send the body for new Post 
     postCreate(post: PostInput!): PostPayload!
+    //send the postId and then the body to replace
     postUpdate(postId: ID!, post: PostInput!): PostPayload!
     postDelete(postId: ID!): PostPayload!
     postPublish(postId: ID!): PostPayload!
@@ -52,9 +56,12 @@ export const typeDefs = gql`
     userErrors: [UserError!]!
     post: Post
   }
-
+  
+  // for Authentication 
   type AuthPayload {
+  // if there's error, catach it here 
     userErrors: [UserError!]!
+    // otherwise, send the token 
     token: String
   }
 
