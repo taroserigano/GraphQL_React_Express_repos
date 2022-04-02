@@ -1,5 +1,5 @@
 
-for new chnage 
+for new chnage: 
 npx prisma db push 
 
 
