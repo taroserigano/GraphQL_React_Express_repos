@@ -22,6 +22,8 @@ export const postResolvers = {
     { post }: PostArgs,
     { prisma, userInfo }: Context
   ): Promise<PostPayloadType> => {
+    
+    // if no userInfo found
     if (!userInfo) {
       return {
         userErrors: [
