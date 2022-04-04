@@ -93,14 +93,10 @@ export const authResolvers = {
         userId: user.id,
       },
     });
-
+    
+    // SIGN UP using token and JWT 
     return {
-      userErrors: [],
-      token: JWT.sign(
-        {
-          userId: user.id,
-        },
-        JSON_SIGNATURE,
+      userErrors: [], token: JWT.sign({ userId: user.id,}, JSON_SIGNATURE,
         {
           expiresIn: 3600000,
         }
