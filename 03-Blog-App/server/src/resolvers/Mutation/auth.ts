@@ -47,11 +47,12 @@ export const authResolvers = {
         token: null,
       };
     }
-
+    // make validator 
     const isValidPassword = validator.isLength(password, {
       min: 5,
     });
-
+    
+    // if validate fails, return error messages 
     if (!isValidPassword) {
       return {
         userErrors: [
@@ -73,9 +74,10 @@ export const authResolvers = {
         token: null,
       };
     }
-
+    
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    
+    // create User using "data" field  
     const user = await prisma.user.create({
       data: {
         email,
@@ -83,7 +85,8 @@ export const authResolvers = {
         password: hashedPassword,
       },
     });
-
+    
+    // create User using "data" field  
     await prisma.profile.create({
       data: {
         bio,
@@ -104,6 +107,8 @@ export const authResolvers = {
       ),
     };
   },
+
+   // SIGN IN
   signin: async (
     _: any,
     { credentials }: SigninArgs,
