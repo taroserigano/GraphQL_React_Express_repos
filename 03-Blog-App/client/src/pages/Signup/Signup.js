@@ -3,6 +3,8 @@ import Button from "@restart/ui/esm/Button";
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
+// define the SIGNUP method structure 
+// this will be extracted later in the frontend 
 const SIGNUP = gql`
   mutation Signup(
     $email: String!
@@ -10,14 +12,17 @@ const SIGNUP = gql`
     $name: String!
     $bio: String!
   ) {
+    // declare signup funcion 
     signup(
       credentials: { email: $email, password: $password }
       name: $name
       bio: $bio
     ) {
+    // also get userErrors 
       userErrors {
         message
       }
+      // and of course also get token 
       token
     }
   }
