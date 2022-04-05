@@ -3,8 +3,9 @@ import Button from "@restart/ui/esm/Button";
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
-// define the SIGNUP method structure 
-// this will be extracted later in the frontend 
+// const [signup, { data, loading }] = useMutation(SIGNUP); 
+// this will load up "signup, data, and loading" values by using useMutation 
+
 const SIGNUP = gql`
   mutation Signup(
     $email: String!
